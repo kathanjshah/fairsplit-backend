@@ -37,7 +37,9 @@ const connectDB = async (retries = 5) => {
       setupAssociations(models);
 
       // Sync database
-      await sequelize.sync({ alter: true });
+      //The below was used to directly create tables if no migration files are needed because it was first time. 
+      //await sequelize.sync({ alter: true });
+      
       console.log("✅ Database synced!");
 
       return;

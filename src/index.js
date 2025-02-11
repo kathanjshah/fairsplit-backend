@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js"; // DB connection
-import createApolloServer from "./server.js"; // Apollo Server setup
+//import createApolloServer from "./server.js"; // Apollo Server setup
 
 dotenv.config();
 
@@ -11,7 +11,7 @@ const app = express();
 connectDB();
 
 // Create and apply Apollo Server to the Express app
-createApolloServer(app);
+//createApolloServer(app);
 
 // Start the Express server
 app.listen(process.env.PORT, () => {

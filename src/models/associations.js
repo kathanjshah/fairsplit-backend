@@ -1,7 +1,7 @@
 export const setupAssociations = ({ User, Expense, Transaction }) => {
     // User ↔ Expense (One-to-Many)
-    User.hasMany(Expense, { foreignKey: "creatorId" });
-    Expense.belongsTo(User, { foreignKey: "creatorId" });
+    User.hasMany(Expense, { foreignKey: "creatorId", as: "creator" });
+    Expense.belongsTo(User, { foreignKey: "creatorId", as: "creator" });
   
     // User ↔ Transaction (One-to-Many)
     User.hasMany(Transaction, { foreignKey: "payeeId", as: "Payee" });

@@ -1,10 +1,11 @@
-import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
+dotenv.config();
+import { Sequelize } from "sequelize";
 import { initializeModels } from "../models/index.js";
 import { setupAssociations } from "../models/associations.js";
 
 // Load environment variables
-dotenv.config();
+
 
 const POSTGRES_PORT = process.env.POSTGRES_PORT ? Number(process.env.POSTGRES_PORT) : 5432;
 

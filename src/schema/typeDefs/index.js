@@ -1,6 +1,6 @@
 import {mutation} from "./mutation.js";
 import {query} from "./query.js";
-import {userTypeDefs, expenseTypeDefs, transactionTypeDefs} from "./types";
+import {userTypeDefs, expenseTypeDefs, transactionTypeDefs} from "./types/index.js";
 
 
 

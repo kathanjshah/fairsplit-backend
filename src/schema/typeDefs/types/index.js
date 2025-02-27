@@ -1,3 +1,3 @@
-export * from './userTypeDefs';
-export * from './expenseTypeDefs';
-export * from './transactionTypeDefs';
+export * from './userTypeDefs.js';
+export * from './expenseTypeDefs.js';
+export * from './transactionTypeDefs.js';

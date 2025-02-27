@@ -35,7 +35,7 @@ const connectDB = async (retries = 5) => {
       const models = initializeModels(sequelize);
 
       // Apply associations
-      setupAssociations(models);
+      const sequalizedModels = setupAssociations(models);
 
       // Sync database
       //The below was used to directly create tables if no migration files are needed because it was first time. 
@@ -43,7 +43,7 @@ const connectDB = async (retries = 5) => {
       
       console.log("✅ Database synced!");
 
-      return;
+      return sequalizedModels;
     } catch (error) {
       console.error(`❌ Database connection failed: ${error.message}`);
       retries -= 1;

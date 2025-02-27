@@ -1,23 +1,24 @@
 import { ApolloServer } from "apollo-server-express";
-import typeDefs from "./schema.js"; // Your GraphQL schema
-import resolvers from "./resolvers.js"; // Your resolvers
+import express from "express";
+import {typeDefs} from "./schema/typeDefs/index.js"; // Your GraphQL schema
+import {resolvers} from "./schema/resolvers/index.js"; // Your resolvers
 
-const createApolloServer = (app) => {
+const createApolloServer = async (app, models) => {
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: ({ req }) => {
-      // Optionally add authentication logic here if needed (e.g., JWT)
-      return {};
-    },
+    context: ({ req }) => ({
+      models,
+      req
+    }) // Optional auth logic
   });
 
-  // Start Apollo Server
-  server.start().then(() => {
-    server.applyMiddleware({ app });
-    console.log(`Apollo Server ready at http://localhost:4000${server.graphqlPath}`);
-  });
+  await server.start(); // ✅ Start the server properly before applying middleware
+  server.applyMiddleware({ app });
 
+  console.log(`🚀 Apollo Server ready at http://localhost:4000${server.graphqlPath}`);
+  
   return server;
 };
 

@@ -9,7 +9,10 @@ export const expenseResolvers = {
     },
     Mutation: {
       async createExpense(_, { amountPaid, creatorId, contributionCount }, { models }) {
-        return await models.Expense.create({ amountPaid, creatorId, contributionCount });
+        const newExpense = await models.Expense.create({ amountPaid, creatorId, contributionCount });
+        return await models.Expense.findByPk(newExpense.id, {
+            include: [{ model: models.User, as: "creator" }],
+          });
       },
       async updateExpense(_, { id, ...updates }, { models }) {
         const expense = await models.Expense.findByPk(id);
